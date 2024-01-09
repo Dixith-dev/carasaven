@@ -96,7 +96,9 @@ def generate_response(message_body, wa_id, name):
     new_message = run_assistant(thread)
     print(f"To {name}:", new_message)
     cleaned_response = re.sub(r'【.*】', '', new_message)
-    return cleaned_response
+    ultra_cleaned_response = re.sub(r'!(.*?)\(([^)]+)\)', r'\1\2', cleaned_response)
+    return ultra_cleaned_response
+
 
 
 # --------------------------------------------------------------
